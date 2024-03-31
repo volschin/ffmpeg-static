@@ -19,7 +19,7 @@ jobs:
           ref: ${{ github.head_ref }}
           fetch-depth: 0 # otherwise, you will failed to push refs to dest 
       - name: Download Release-Info
-        run: wget https://johnvansickle.com/ffmpeg/release-readme.txt
+        run: wget -nc -q https://johnvansickle.com/ffmpeg/release-readme.txt
       - name: Fetch release version
         run: grep 'version:' release-readme.txt > release-version
       - name: Store Version number in env
