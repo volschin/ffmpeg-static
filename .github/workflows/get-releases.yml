@@ -24,7 +24,7 @@ jobs:
         run: grep 'version:' release-readme.txt > release-version
       - name: Store Version number in env
         run: |
-          echo "version=$(cat release-version)" >> $GITHUB_ENV
+          echo "version=$(cat release-version|perl -lwe 'print /.*version: (.*)/;')" >> $GITHUB_ENV
       - name: Autocommit latest release version
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
