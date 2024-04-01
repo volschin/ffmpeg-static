@@ -21,7 +21,7 @@ jobs:
       - name: Download Release-Info
         run: wget -nc -q https://johnvansickle.com/ffmpeg/release-readme.txt
       - name: Fetch release version
-        run: grep 'version:' release-readme.txt | perl -n -e 'if (/^\s*version:(\w+)/) { print "$1" }' > release-version
+        run: grep 'version:' release-readme.txt | perl -n -e 'if (/^\s*version: (\w+)/) { print "$1" }' > release-version
       - name: Store Version number in env
         run: |
           echo "version=$(cat release-version)" >> $GITHUB_ENV
